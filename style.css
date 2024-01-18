@@ -1,0 +1,239 @@
+:root {
+	--color-yellow: oklch(78.44% 0.1296 79.47);
+	--color-green: oklch(78.44% 0.1296 134.76);
+	--color-blue: oklch(78.44% 0.1296 186.13);
+	--color-purple: oklch(78.44% 0.1296 309.38);
+	
+	--color-terracotta: oklch(0.64 0.13 38.23);
+	--color-cream: oklch(98.67% 0.0127 97.63);
+
+	--color-difficulty-1: var(--color-yellow);
+	--color-difficulty-2: var(--color-green);
+	--color-difficulty-3: var(--color-blue);
+	--color-difficulty-4: var(--color-purple);
+	--color-info: dodgerblue;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: inherit;
+}
+body {
+	display: grid;
+	grid-template-columns: 33vw 1fr;
+	font-family: Plus Jakarta Sans, system-ui, sans-serif;
+	height: 100dvh;
+	line-height: 1.5;
+}
+input {
+	font-size: 1rem;
+}
+/*
+	SIDEBAR
+*/
+.sidebar {
+	border-right: 1px solid #ddd;
+	overflow-y: scroll;
+}
+.sidebar::-webkit-scrollbar { 
+	/* width: 10px; */
+}
+.sidebar-content {
+	padding: .5em;
+}
+.sidebar-content > * {
+	margin-bottom: 1.5em;
+}
+.sidebar-header {
+	background-color: white;
+	border-bottom: 1px solid #ddd;
+	padding: .5em;
+}
+.sidebar-footer {
+	bottom: 0;
+	position: sticky;
+	background-color: white;
+	padding: .5em;
+	border-top: 1px solid #ddd;
+	gap: 5px;
+	display: grid;
+	grid-template-columns: 3fr 7fr;
+}
+.sidebar-footer > * {
+	border: none;
+	padding: .5em;
+	border-radius: 5px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	flex-grow: 1;
+	cursor: pointer;
+}
+.generate {
+	color: white;
+	background-color: dodgerblue;
+}
+/*
+	BUTTONS
+*/
+.generate:hover {
+	background-color: #1573d1;
+}
+.reset {
+	--red: #ae0f27;
+	border: 1px solid var(--red);
+	color: var(--red);
+}
+.reset:hover {
+	background-color: var(--red);
+	color: white;
+}
+/* 
+	SECTIONS
+*/
+.break {
+	height: 1px;
+	margin-inline: auto;
+	margin-block: 1em;
+	background-color: #ddd;
+}
+.section-header {
+	margin-bottom: .5em;
+}
+
+/*
+	INFO
+*/
+.info {
+	border-left: 5px solid var(--color-info);
+	padding: .5em;
+	padding-left: .7em;
+	font-style: italic;
+}
+.info-header {
+	display: flex;
+	gap: .2em;
+	font-weight: bold;
+	font-style: normal;
+	color: var(--color-info);
+}
+
+/*
+	FIELDSETS
+*/
+.group-1 {
+	--accent: var(--color-difficulty-1);
+}
+.group-2 {
+	--accent: var(--color-difficulty-2);
+}
+.group-3 {
+	--accent: var(--color-difficulty-3);
+}
+.group-4 {
+	--accent: var(--color-difficulty-4);
+}
+fieldset {
+	/* background-color: #f5f5f5; */
+	padding: .5em;
+	border-radius: 5px;
+	border: 2px solid var(--accent);
+}
+legend {
+	padding: .3em .5em;
+	background-color: var(--accent);
+	color: white;
+	border-radius: 5px;
+}
+/*
+	### INPUTS ###
+*/
+
+.input-group {
+	margin-bottom: .7em;
+	position: relative;
+}
+
+.input-group:focus-within > label {
+	display: block;
+}
+.input-group > label {
+	position: absolute;
+	font-size: .7em;
+	text-transform: uppercase;
+	background-color: white;
+	padding-inline: .1em;
+	translate: 0 -50%;
+	left: 1em;
+	display: none;
+	color: dodgerblue;
+}
+input {
+	width: 100%;
+	padding: .4em .5em;
+	background: transparent;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+input:focus {
+	outline: none;
+	border: 1px solid dodgerblue;
+}
+
+/*
+	BOARD
+*/
+.board-preview {
+	display: grid;
+}
+.board {
+	width: clamp(40vw, 30em, calc(100% - 2em));
+	height: 60vh;
+	gap: .5em;
+	margin: auto;
+
+	--gap: 10px;
+	--size: calc(calc(100% - calc(3 * var(--gap))) / 4);
+	position: relative;
+}
+.board__item {
+	background-color: var(--accent);
+	color: white;
+	display: grid;
+	place-content: center;
+	position: absolute;
+	width: var(--size);
+	height: var(--size);
+}
+.board__item:empty {
+	border: 2px solid #ddd;
+	color: #ddd;
+}
+.board__item:empty::before {
+	content: attr(data-content);
+	font-style: italic;
+}
+.col-1 {
+	left: 0;
+}
+.col-2 {
+	left: calc(var(--size) + var(--gap));
+}
+.col-3 {
+	left: calc(2 * calc(var(--size) + var(--gap)));
+}
+.col-4 {
+	left: calc(3 * calc(var(--size) + var(--gap)));
+}
+.row-1 {
+	top: 0;
+}
+.row-2 {
+	top: calc(var(--size) + var(--gap));
+}
+.row-3 {
+	top: calc(2 * calc(var(--size) + var(--gap)));
+}
+.row-4 {
+	top: calc(3 * calc(var(--size) + var(--gap)));
+}
