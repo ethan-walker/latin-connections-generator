@@ -6,22 +6,56 @@ const board = document.querySelector(".board");
 const loadStorage = () => JSON.parse(localStorage.input || "{}");
 const saveStorage = (data) => localStorage.input = JSON.stringify(data);
 
+document.onkeyup = function(e) {
+	if (e.target.tagName !== "INPUT") return;
+	
+	if (event.key === "Enter") {
+		e.target.blur();
+	}
+	if (event.key === "Backspace" && !e.target.value) {
+		generate.setAttribute("aria-disabled", "true")
+	}
+};
+
+data.querySelectorAll("input").forEach(input => {
+	input.onblur = function saveValue(e) {
+		const elem = e.target;
+		let storage = loadStorage();
+		storage[elem.id] = elem.value;
+		saveStorage(storage);
+		if (fullData()) {
+			generate.setAttribute("aria-disabled", "false");
+		}
+		else {
+			generate.setAttribute("aria-disabled", "true");
+		}
+	}
+})
 function loadValues() {
 	let storage = loadStorage();
 	for (let id in storage) {
-		console.log(id, storage[id]);
 		document.getElementById(id).value = storage[id];
+	}
+	if (fullData()) {
+		generate.setAttribute("aria-disabled", "false");
+		generateBoard();
+	}
+	else {
+		generate.setAttribute("aria-disabled", "true");
 	}
 }
 loadValues();
+function fullData() {
+	const inputs = Array.from(data.querySelectorAll("input"))
+	return inputs.every(input => input.value);
+}
 
-generate.onclick = () => {
-	let storage = loadStorage();
-	
+generate.onclick = generateBoard;
+
+function generateBoard() {
 	let categories = [];
 	let count = 0;
 	data.querySelectorAll("input").forEach(input => {
-		storage[input.id] = input.value;
 		const category_title = /group-[0-9]__name/.test(input.name);
 		if (category_title) categories.push(input.value);
 		else {
@@ -31,7 +65,6 @@ generate.onclick = () => {
 			count ++;
 		}
 	})
-	saveStorage(storage);
 console.log(categories);
 }
 const shuffleArray = array => {

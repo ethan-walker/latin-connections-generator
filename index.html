@@ -24,7 +24,8 @@
 		<div class="sidebar-content">
 			<div class="info">
 				<div class="info-header"><i class="uil uil-info-circle"></i><span>Note</span></div>
-				Groups are numbered in <strong>increasing</strong> difficulty</div>
+				Groups are numbered in <strong>increasing</strong> difficulty.<br>
+			</div>
 			<fieldset class="group-1">
 				<legend>Group 1</legend>
 				<h4 class="section-header">📛 Category Details</h4>
@@ -132,27 +133,33 @@
 		</div>
 		<div class="sidebar-footer">
 			<button class="reset">Reset</button>
-			<button class="generate">Generate</button>
+			<button class="generate" aria-disabled="true">Generate</button>
 		</div>
 	</aside>
 	<main class="board-preview">
-		<div class="board">
-			<div class="board__item row-1 col-1" data-content="lorem"></div>
-			<div class="board__item row-1 col-2" data-content="ipsum"></div>
-			<div class="board__item row-1 col-3" data-content="dolor"></div>
-			<div class="board__item row-1 col-4" data-content="sit"></div>
-			<div class="board__item row-2 col-1" data-content="amet"></div>
-			<div class="board__item row-2 col-2" data-content="consectetur"></div>
-			<div class="board__item row-2 col-3" data-content="adipiscing"></div>
-			<div class="board__item row-2 col-4" data-content="elit"></div>
-			<div class="board__item row-3 col-1" data-content="sed"></div>
-			<div class="board__item row-3 col-2" data-content="fermentum"></div>
-			<div class="board__item row-3 col-3" data-content="congue"></div>
-			<div class="board__item row-3 col-4" data-content="molestie"></div>
-			<div class="board__item row-4 col-1" data-content="sed"></div>
-			<div class="board__item row-4 col-2" data-content="vestibulum"></div>
-			<div class="board__item row-4 col-3" data-content="a"></div>
-			<div class="board__item row-4 col-4" data-content="eros"></div>
+		<div class="preview-content">
+			<div class="board">
+				<div class="board__item row-1 col-1" data-content="lorem"></div>
+				<div class="board__item row-1 col-2" data-content="ipsum"></div>
+				<div class="board__item row-1 col-3" data-content="dolor"></div>
+				<div class="board__item row-1 col-4" data-content="sit"></div>
+				<div class="board__item row-2 col-1" data-content="amet"></div>
+				<div class="board__item row-2 col-2" data-content="consectetur"></div>
+				<div class="board__item row-2 col-3" data-content="adipiscing"></div>
+				<div class="board__item row-2 col-4" data-content="elit"></div>
+				<div class="board__item row-3 col-1" data-content="sed"></div>
+				<div class="board__item row-3 col-2" data-content="fermentum"></div>
+				<div class="board__item row-3 col-3" data-content="congue"></div>
+				<div class="board__item row-3 col-4" data-content="molestie"></div>
+				<div class="board__item row-4 col-1" data-content="sed"></div>
+				<div class="board__item row-4 col-2" data-content="vestibulum"></div>
+				<div class="board__item row-4 col-3" data-content="a"></div>
+				<div class="board__item row-4 col-4" data-content="eros"></div>
+			</div>
+			<div class="button-bar">
+				<button><i class="uil uil-shuffle"></i>Shuffle</button>
+				<button><i class="uil uil-copy"></i> Copy Code!</button>
+			</div>
 		</div>
 	</main>
   <script src="script.js"></script>

@@ -29,6 +29,9 @@ body {
 input {
 	font-size: 1rem;
 }
+strong {
+	color: var(--accent, black);
+}
 /*
 	SIDEBAR
 */
@@ -69,15 +72,19 @@ input {
 	flex-grow: 1;
 	cursor: pointer;
 }
+/*
+	BUTTONS
+*/
 .generate {
 	color: white;
 	background-color: dodgerblue;
 }
-/*
-	BUTTONS
-*/
 .generate:hover {
 	background-color: #1573d1;
+}
+.generate[aria-disabled="true"] {
+	pointer-events: none;
+	opacity: .5;
 }
 .reset {
 	--red: #ae0f27;
@@ -92,10 +99,9 @@ input {
 	SECTIONS
 */
 .break {
-	height: 1px;
 	margin-inline: auto;
 	margin-block: 1em;
-	background-color: #ddd;
+	border-bottom: 1px solid #ddd;
 }
 .section-header {
 	margin-bottom: .5em;
@@ -155,9 +161,13 @@ legend {
 }
 
 .input-group:focus-within > label {
-	display: block;
+	opacity: 1;
+}
+.input-group:not(:focus-within) > label {
+	opacity: 0;
 }
 .input-group > label {
+	display: block;
 	position: absolute;
 	font-size: .7em;
 	text-transform: uppercase;
@@ -165,8 +175,8 @@ legend {
 	padding-inline: .1em;
 	translate: 0 -50%;
 	left: 1em;
-	display: none;
 	color: dodgerblue;
+	transition: 300ms;
 }
 input {
 	width: 100%;
@@ -178,6 +188,7 @@ input {
 input:focus {
 	outline: none;
 	border: 1px solid dodgerblue;
+	transition: 300ms;
 }
 
 /*
@@ -186,11 +197,13 @@ input:focus {
 .board-preview {
 	display: grid;
 }
-.board {
+.preview-content {
 	width: clamp(40vw, 30em, calc(100% - 2em));
+	margin: auto;
+}
+.board {
 	height: 60vh;
 	gap: .5em;
-	margin: auto;
 
 	--gap: 10px;
 	--size: calc(calc(100% - calc(3 * var(--gap))) / 4);
@@ -236,4 +249,25 @@ input:focus {
 }
 .row-4 {
 	top: calc(3 * calc(var(--size) + var(--gap)));
+}
+
+/*
+	BUTTON BAR
+*/
+.button-bar {
+	margin-top: 1em;
+	display: flex;
+	gap: .5em;
+}
+.button-bar > button {
+	background-color: #303030;
+	color: white;
+	min-height: 25px;
+	padding: .2em .5em;
+	font-size: 1rem;
+	border-radius: 5px;
+	border: none;
+}
+.button-bar i {
+	margin-right: .3em;
 }
