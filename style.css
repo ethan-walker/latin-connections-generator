@@ -21,7 +21,7 @@
 }
 body {
 	display: grid;
-	grid-template-columns: 33vw 1fr;
+	grid-template-columns: clamp(20ch, 30ch, 33vw) 1fr;
 	font-family: Plus Jakarta Sans, system-ui, sans-serif;
 	height: 100dvh;
 	line-height: 1.5;
@@ -83,7 +83,7 @@ strong {
 	background-color: #1573d1;
 }
 .generate[aria-disabled="true"] {
-	pointer-events: none;
+	/* pointer-events: none; */
 	opacity: .5;
 }
 .reset {
@@ -210,13 +210,16 @@ input:focus {
 	position: relative;
 }
 .board__item {
-	background-color: var(--accent);
-	color: white;
 	display: grid;
 	place-content: center;
 	position: absolute;
 	width: var(--size);
 	height: var(--size);
+	text-align: center;
+}
+.board__item:not(:empty) {
+	background-color: var(--accent);
+	color: white;
 }
 .board__item:empty {
 	border: 2px solid #ddd;
@@ -260,13 +263,13 @@ input:focus {
 	gap: .5em;
 }
 .button-bar > button {
-	background-color: #303030;
-	color: white;
+	border: 1px solid #303030;
+	color: #303030;
 	min-height: 25px;
-	padding: .2em .5em;
+	padding: .3em .5em;
 	font-size: 1rem;
 	border-radius: 5px;
-	border: none;
+	cursor: pointer;
 }
 .button-bar i {
 	margin-right: .3em;
